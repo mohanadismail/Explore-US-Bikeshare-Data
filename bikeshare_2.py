@@ -22,24 +22,30 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!\n')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     vc = False
+    city = input('Which city would you like to explore? Chicago, New York City or Washington?\n')
     while vc == False:
-        city = input('Which city would you like to explore? Chicago, New York City or Washington?\n')
         if city.lower() in CITY_DATA.keys():
            vc = True
+        else:
+            city = input("I didn't quite catch that. Please type the whole city name\n")
 
     # get user input for month (all, january, february, ... , june)
     vm = False
+    month = input('Now, which months would you like to look at? You can choose January to June or type "all"\n')
     while vm == False:
-        month = input('Now, which months would you like to look at? You can choose January to June or type "all"\n')
         if month.title() in months or month.lower() == 'all':
             vm = True
+        else:
+            month = input("I didn't understand :(. Please type the whole month name\n")
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     vd = False
+    day = input('Finally, which day would you like to explore? Please type the whole day name or type "all"\n')
     while vd == False:
-        day = input('Finally, which day would you like to explore? Please type the whole day name or type "all"\n')
         if day.title() in days or day.lower() == 'all':
             vd = True
+        else:
+            day = input("I don't know this day :(. Please type the whole day name\n")
 
     print('-'*40)
     return city, month, day
