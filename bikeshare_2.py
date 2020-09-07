@@ -146,6 +146,20 @@ def user_stats(df, city):
     print('-'*40)
 
 
+def raw_data(df):
+    raw = input("Would you like to see 5 lines of row data? (y/n)")
+    while raw.lower() != 'y' and raw.lower() != 'n':
+        raw = input("I didn't quite catch that. Please type 'y' or 'n'\n")
+    i = 0
+    j = 5
+    while raw.lower() == 'y':
+        print(df.iloc[i:j])
+        raw = input("Would you like to see 5 more rows? (y/n)\n")
+        while raw.lower() != 'y' and raw.lower() != 'n':
+            raw = input("I didn't quite catch that. Please type 'y' or 'n'\n")
+        i += 5
+        j += 5
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -155,9 +169,10 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df, city)
+        raw_data(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
+        restart = input('\nWould you like to restart? (y/n)\n')
+        if restart.lower() != 'y':
             break
 
 
