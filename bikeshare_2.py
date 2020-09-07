@@ -76,13 +76,13 @@ def time_stats(df):
     start_time = time.time()
 
     # display the most common month
-
+    print("\nThe most common month is {}".format(months[df['Start Time'].dt.month.mode()[0] - 1]))
 
     # display the most common day of week
-
+    print("\nThe most common day of week is {}".format(df['Start Week Day'].mode()[0]))
 
     # display the most common start hour
-
+    print("\nThe most common start hour is {}".format(df['Start Time'].dt.hour.mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -148,13 +148,13 @@ def main():
         df = load_data(city, month, day)
 
         time_stats(df)
-        station_stats(df)
+        """station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
-            break
+            break"""
 
 
 if __name__ == "__main__":
