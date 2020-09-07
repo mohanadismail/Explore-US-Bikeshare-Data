@@ -123,20 +123,23 @@ def trip_duration_stats(df):
     print('-'*40)
 
 
-def user_stats(df):
+def user_stats(df, city):
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
     # Display counts of user types
+    print(df['User Type'].value_counts())
 
+    if (city.lower() != 'washington'):
+        # Display counts of gender
+        print(df['Gender'].value_counts())
 
-    # Display counts of gender
-
-
-    # Display earliest, most recent, and most common year of birth
-
+        # Display earliest, most recent, and most common year of birth
+        print("Earliest year of birth is {}".format(df['Birth Year'].min()))
+        print("Most recent year of birth is {}".format(df['Birth Year'].max()))
+        print("Most common year of birth is {}".format(df['Birth Year'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -148,13 +151,13 @@ def main():
         df = load_data(city, month, day)
 
         time_stats(df)
-        """station_stats(df)
+        station_stats(df)
         trip_duration_stats(df)
-        user_stats(df)
+        user_stats(df, city)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
-            break"""
+            break
 
 
 if __name__ == "__main__":
